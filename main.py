@@ -28,7 +28,7 @@ def get_text(img):
 
 def main():
     # path for the folder for getting the raw images
-    path = "images/edited"
+    path = "images"
 
     # link to the file in which output needs to be kept
     fullTempPath = "output/out.txt"
