@@ -27,33 +27,31 @@ def get_text(img):
 
 
 def main():
-    # path for the folder for getting the raw images
+    # path for images
     path = "images"
 
-    # link to the file in which output needs to be kept
-    fullTempPath = "output/out.txt"
+    # output file
+    outputPath = "output/out.txt"
+
+    open(outputPath, 'w').close()
+    outFile = open(outputPath, "a+")
 
     # iterating the images inside the folder
     for imageName in os.listdir(path):
         inputPath = os.path.join(path, imageName)
 
-        # applying ocr using pytesseract for python
         text = get_text(inputPath)
 
-        # saving the  text for appending it to the output.txt file
-        # a + parameter used for creating the file if not present
-        # and if present then append the text content
-        file1 = open(fullTempPath, "a+")
-
         # providing the name of the image
-        file1.write(imageName+"\n")
+        # file1.write(imageName+"\n")
 
         # providing the content in the image
-        file1.write(text+"\n")
-        file1.close()
+        outFile.write(text+"\n")
+
+    outFile.close()
 
     # for printing the output file
-    file2 = open(fullTempPath, 'r')
+    file2 = open(outputPath, 'r')
     print(file2.read())
     file2.close()
 
